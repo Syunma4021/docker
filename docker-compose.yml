@@ -23,7 +23,8 @@ services:
     container_name: 'python3'
     working_dir: '//'
     tty: true
-    volumes: 
-      - //volumes
     environment:
         TZ: "Asia/Tokyo"
+    volumes: 
+      - //volumes
+      
