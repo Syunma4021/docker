@@ -2,7 +2,10 @@ version: "3"
 
 services:
   postgres:
-    image: postgres:10
+    image: postgres
+    build:
+      dockerfile: ./postgresql/Dockerfile
+    container_name: 'postgres'
     ports:
       - "5432:5432"
     environment:
@@ -13,8 +16,10 @@ services:
       - ./db/psgl:/var/lib/postgresql/data
 
   python3:
+    image: python3
     restart: always
-    build: .
+    build:
+      dockerfile: ./python/Dockerfile
     container_name: 'python3'
     working_dir: '//'
     tty: true
