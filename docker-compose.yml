@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment:
+      TZ: "Asia/Tokyo"
+      POSTGRES_USER: postgre
+      POSTGRES_PASSWORD: postgre
+    volumes:
+      - ./db/psgl:/var/lib/postgresql/data
+
+  python3:
+    restart: always
+    build: .
+    container_name: 'python3'
+    working_dir: '//'
+    tty: true
+    volumes: 
+      - //volumes
+    environment:
+        TZ: "Asia/Tokyo"
