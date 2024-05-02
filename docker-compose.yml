@@ -13,18 +13,15 @@ services:
       POSTGRES_USER: postgre
       POSTGRES_PASSWORD: postgre
     volumes:
-      - ./db/psgl:/var/lib/postgresql/data
+      - ./postgresql/data:/var/lib/postgresql/data
 
   python3:
     image: python3
-    restart: always
     build:
       dockerfile: ./python/Dockerfile
     container_name: 'python3'
-    working_dir: '//'
     tty: true
     environment:
         TZ: "Asia/Tokyo"
     volumes: 
-      - //volumes
-      
+      - ./python/data:/var/lib/python3/data
